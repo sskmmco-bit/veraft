@@ -1,0 +1,108 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Menu } from "lucide-react";
+import { primaryNav, site } from "@/lib/site";
+import { cn } from "@/lib/cn";
+import { Container } from "@/components/ui/container";
+import { ButtonLink } from "@/components/ui/button";
+import { Logo } from "./logo";
+import { MobileMenu } from "./mobile-menu";
+
+export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 8);
+        ticking = false;
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        "sticky top-0 z-40 transition-[background-color,border-color,backdrop-filter] duration-300",
+        scrolled
+          ? "border-b border-line bg-paper/80 backdrop-blur-md"
+          : "border-b border-transparent bg-paper/0",
+      )}
+    >
+      <Container>
+        <div
+          className={cn(
+            "flex items-center justify-between transition-[height] duration-300",
+            scrolled ? "h-16" : "h-20",
+          )}
+        >
+          <Logo />
+
+          <nav aria-label="Primary" className="hidden md:block">
+            <ul className="flex items-center gap-1">
+              {primaryNav.map((item) => {
+                const active =
+                  pathname === item.href ||
+                  pathname.startsWith(item.href + "/");
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "relative rounded-md px-3 py-2 text-body-sm transition-colors duration-150",
+                        active
+                          ? "text-ink"
+                          : "text-muted hover:text-ink",
+                      )}
+                    >
+                      {item.label}
+                      {active && (
+                        <span
+                          aria-hidden
+                          className="absolute inset-x-3 -bottom-px h-px bg-accent"
+                        />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <ButtonLink href="/contact" className="hidden md:inline-flex">
+              Start a project
+            </ButtonLink>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              className="inline-flex size-11 items-center justify-center rounded-md text-ink hover:bg-mist md:hidden"
+            >
+              <Menu size={22} strokeWidth={1.5} aria-hidden />
+            </button>
+          </div>
+        </div>
+      </Container>
+
+      <MobileMenu
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        contactEmail={site.email}
+      />
+    </header>
+  );
+}
