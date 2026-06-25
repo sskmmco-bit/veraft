@@ -19,6 +19,7 @@
   --color-accent: #001ffe; /* company blue — surgical use only */
   --color-accent-press: #0017c2; /* hover / active darken */
   --color-accent-2: #3d6bff; /* signature element glow/gradient ONLY */
+  --color-danger: #c0341d; /* form validation errors only */
 
   /* --- Type families (Geist via the geist npm package) --- */
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
