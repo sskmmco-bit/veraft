@@ -59,6 +59,87 @@ export const principles = [
   },
 ];
 
+/** Per-service detail copy, keyed by pillar slug. */
+export type ServiceDetail = {
+  whoFor: string;
+  approach: { title: string; body: string }[];
+};
+
+export const serviceDetails: Record<string, ServiceDetail> = {
+  "ai-solutions": {
+    whoFor:
+      "For teams drowning in repetitive questions — customer support, sales, and internal helpdesks.",
+    approach: [
+      {
+        title: "Grounded in your data",
+        body: "We connect the assistant to your docs, tickets, and systems so answers are specific, current, and traceable.",
+      },
+      {
+        title: "Honest by design",
+        body: "It defers to a person when it isn't sure — with the full thread and context already attached.",
+      },
+      {
+        title: "Measured by resolution",
+        body: "We track deflection and accuracy against real conversations, not vanity chat volume.",
+      },
+    ],
+  },
+  "custom-software": {
+    whoFor:
+      "For teams outgrowing spreadsheets and bending themselves around rigid off-the-shelf tools.",
+    approach: [
+      {
+        title: "Modeled on your process",
+        body: "We map how work really flows, then build to fit it — instead of forcing your team to fit the software.",
+      },
+      {
+        title: "Built to last",
+        body: "A clean data model, a standard stack, and documentation that makes the next change easy.",
+      },
+      {
+        title: "Adopted, not just shipped",
+        body: "We design for the people who live in it every day, so it actually gets used.",
+      },
+    ],
+  },
+  "web-development": {
+    whoFor:
+      "For companies whose website or product needs to feel as considered as it is capable.",
+    approach: [
+      {
+        title: "Fast and accessible",
+        body: "Performance and accessibility are requirements from the first commit, not a final-week scramble.",
+      },
+      {
+        title: "Designed and built together",
+        body: "One team across design and engineering, so intent doesn't get lost in handoff.",
+      },
+      {
+        title: "Yours to run",
+        body: "Clean, standard code on infrastructure you own and control.",
+      },
+    ],
+  },
+  automation: {
+    whoFor:
+      "For teams losing hours to manual, repetitive steps shuffled between disconnected tools.",
+    approach: [
+      {
+        title: "Map before we automate",
+        body: "We find the steps genuinely worth removing — and deliberately leave the judgment calls to people.",
+      },
+      {
+        title: "Reliable over clever",
+        body: "Observable, retry-safe workflows you can trust to run unattended, with alerts when something needs you.",
+      },
+      {
+        title: "Connected to what you use",
+        body: "We integrate with your existing tools through their APIs — no rip-and-replace.",
+      },
+    ],
+  },
+};
+
 /** Tech we reach for (kept honest and high-level). */
 export const techStack = [
   { group: "Product", items: ["Next.js", "React", "TypeScript", "React Native"] },
