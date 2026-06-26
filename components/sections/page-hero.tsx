@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { ColumnFrame } from "@/components/ui/column-frame";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -32,7 +33,8 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-line bg-paper">
+    <section className="relative border-b border-line bg-paper">
+      <ColumnFrame />
       <Container className="pb-16 pt-14 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
         <motion.div
           variants={container}

@@ -1,5 +1,6 @@
 import type { ElementType, ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { ColumnFrame } from "./column-frame";
 
 type Tone = "paper" | "mist" | "ink";
 
@@ -30,11 +31,12 @@ export function Section({
     <Tag
       id={id}
       className={cn(
-        "py-20 sm:py-28 lg:py-32",
+        "relative py-20 sm:py-28 lg:py-32",
         toneClass[tone],
         className,
       )}
     >
+      <ColumnFrame onDark={tone === "ink"} />
       {children}
     </Tag>
   );

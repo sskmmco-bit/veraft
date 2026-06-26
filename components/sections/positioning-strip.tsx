@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import { ColumnFrame } from "@/components/ui/column-frame";
 
 const domains = [
   "Support",
@@ -14,7 +15,8 @@ const domains = [
  */
 export function PositioningStrip() {
   return (
-    <section className="border-y border-line bg-paper">
+    <section className="relative border-y border-line bg-paper">
+      <ColumnFrame />
       <Container className="flex flex-col items-center justify-between gap-x-10 gap-y-5 py-7 sm:flex-row">
         <p className="text-body-sm text-muted">
           Trusted to build the software behind everyday operations.

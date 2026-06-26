@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { pillars, primaryNav, site, social } from "@/lib/site";
 import { Container } from "@/components/ui/container";
+import { ColumnFrame } from "@/components/ui/column-frame";
 import { Logo } from "./logo";
 
 const companyLinks = [
@@ -14,7 +15,8 @@ export function Footer() {
   const year = 2026;
 
   return (
-    <footer className="bg-ink-soft text-paper">
+    <footer className="relative bg-ink-soft text-paper">
+      <ColumnFrame onDark />
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div className="max-w-xs">

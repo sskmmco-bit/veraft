@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { ColumnFrame } from "@/components/ui/column-frame";
 import { SignaturePipeline } from "./signature-pipeline";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -27,6 +28,7 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute -right-40 -top-40 hidden size-[36rem] rounded-full bg-accent/5 blur-3xl lg:block"
       />
+      <ColumnFrame />
       <Container className="relative pb-20 pt-14 sm:pb-28 sm:pt-20 lg:pb-32 lg:pt-24">
         <motion.div
           variants={container}
