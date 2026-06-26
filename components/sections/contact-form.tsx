@@ -23,7 +23,7 @@ const empty: ContactInput = {
 
 const inputBase =
   "w-full rounded-lg border bg-paper px-4 py-3 text-body text-ink " +
-  "placeholder:text-muted/50 transition-colors duration-150";
+  "placeholder:text-muted/60 transition-colors duration-150";
 
 export function ContactForm() {
   const [values, setValues] = useState<ContactInput>(empty);
@@ -221,7 +221,7 @@ function FieldLabel({
     >
       {label}
       {required && <span className="ml-1 text-accent">*</span>}
-      {optional && <span className="ml-1 normal-case text-muted/60">(optional)</span>}
+      {optional && <span className="ml-1 normal-case text-muted">(optional)</span>}
     </label>
   );
 }

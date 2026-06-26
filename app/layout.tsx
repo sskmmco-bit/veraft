@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { fontSans, fontMono } from "@/lib/fonts";
 import { cn } from "@/lib/cn";
-import { site } from "@/lib/site";
+import { site, social } from "@/lib/site";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -38,6 +38,17 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  email: site.email,
+  logo: `${site.url}/icon.svg`,
+  sameAs: social.map((s) => s.href),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -47,6 +58,14 @@ export default function RootLayout({
       className={cn(fontSans.variable, fontMono.variable, "h-full antialiased")}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
+        {/* No-JS safety net: reveal anything Motion left hidden for its entrance. */}
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <a
           href="#main"
           className="sr-only rounded-md bg-ink px-4 py-2 text-paper focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"

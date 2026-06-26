@@ -31,7 +31,7 @@ export function ArrowLink({
         size={16}
         strokeWidth={1.75}
         aria-hidden
-        className="transition-transform duration-150 ease-[var(--ease-out-quint)] group-hover:translate-x-0.5"
+        className="transition-transform duration-150 ease-out-quint group-hover:translate-x-0.5"
       />
     </Link>
   );

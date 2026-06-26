@@ -40,7 +40,7 @@ export function SignaturePipeline() {
 
   return (
     <div
-      className="relative w-full rounded-[18px] border border-line bg-paper p-6 sm:p-8"
+      className="relative w-full overflow-hidden rounded-[18px] border border-line bg-paper p-5 sm:p-8"
       role="img"
       aria-label="A request enters, the Veraft agent processes it, and a resolved outcome comes out."
     >
@@ -100,10 +100,10 @@ function Chip({
   keyId: string;
 }) {
   const accent = side === "outcome";
-  const content = (
+  const pill = (
     <span
       className={
-        "inline-flex max-w-[10rem] items-center gap-2 truncate rounded-pill border px-3 py-1.5 font-mono text-label sm:max-w-none " +
+        "flex max-w-full items-center gap-2 rounded-pill border px-3 py-1.5 font-mono text-label " +
         (accent
           ? "border-accent/25 bg-accent/5 text-ink"
           : "border-line bg-mist text-muted")
@@ -116,25 +116,30 @@ function Chip({
           (accent ? "bg-accent" : "bg-muted")
         }
       />
-      {children}
+      <span className="truncate">{children}</span>
     </span>
   );
 
-  if (reduced) return content;
-
-  return (
+  const inner = reduced ? (
+    pill
+  ) : (
     <AnimatePresence mode="wait">
       <motion.span
         key={keyId}
+        className="flex max-w-full"
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -6 }}
         transition={{ duration: 0.4, ease: EASE }}
       >
-        {content}
+        {pill}
       </motion.span>
     </AnimatePresence>
   );
+
+  // The width cap lives on the flex child so truncation works in both
+  // the static and animated paths, and chips never overflow on mobile.
+  return <span className="flex min-w-0 max-w-[46%] sm:max-w-[16rem]">{inner}</span>;
 }
 
 function Node({

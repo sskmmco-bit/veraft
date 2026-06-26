@@ -4,7 +4,8 @@ AI-first software company marketing site. Next.js (App Router) + TypeScript + Ta
 
 ## Design system
 
-- Everything derives from CSS variables / tokens in `app/globals.css` (Tailwind v4 `@theme`). No hardcoded colors in components — use token utilities (`bg-paper`, `text-ink`, `border-line`, `text-accent`, etc.).
+- Everything derives from design tokens. Colors live as RGB channel triples in `app/globals.css` (`:root`, `--c-*`) and are mapped to utilities in `tailwind.config.ts`. No hardcoded colors in components — use token utilities (`bg-paper`, `text-ink`, `border-line`, `text-accent`, etc.). For direct CSS/SVG/inline use, solid `--color-*` vars are also exposed.
+- Tailwind **v3.4** (pure-JS engine). v4 was unusable here: the corporate registry blocks the native oxide binary and the WASM fallback's scanner emits no utilities. See README.
 - Aesthetic: "engineered calm" — precise, restrained, one signature element, surgical use of the accent (`#001FFE`).
 - Mostly light/white with a couple of intentional dark sections (CTA band, footer). Hairline 1px borders over heavy shadows.
 - Motion is restrained: fast, ease-out, scroll-reveal once, reduced-motion respected. When unsure, don't animate.

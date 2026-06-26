@@ -35,7 +35,7 @@ export function PillarCard({ pillar }: { pillar: Pillar }) {
       <h3 className="mt-5 text-heading text-ink">{pillar.title}</h3>
       <p className="mt-2.5 text-body-sm text-muted">{pillar.summary}</p>
 
-      <p className="mt-5 font-mono text-label text-muted/80">
+      <p className="mt-5 font-mono text-label text-muted">
         {pillar.offerings.slice(0, 3).join(" · ")}
       </p>
 
@@ -45,7 +45,7 @@ export function PillarCard({ pillar }: { pillar: Pillar }) {
           size={16}
           strokeWidth={1.75}
           aria-hidden
-          className="transition-transform duration-150 ease-[var(--ease-out-quint)] group-hover:translate-x-0.5"
+          className="transition-transform duration-150 ease-out-quint group-hover:translate-x-0.5"
         />
       </span>
     </Link>

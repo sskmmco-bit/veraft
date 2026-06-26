@@ -23,7 +23,7 @@ export function PositioningStrip() {
           {domains.map((d) => (
             <li
               key={d}
-              className="font-mono text-label uppercase tracking-[0.12em] text-muted/70"
+              className="font-mono text-label uppercase tracking-[0.12em] text-muted"
             >
               {d}
             </li>
