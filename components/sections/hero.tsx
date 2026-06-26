@@ -10,14 +10,14 @@ import { ColumnFrame } from "@/components/ui/column-frame";
  */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-line">
+    <section className="relative flex min-h-[72vh] items-center overflow-hidden border-b border-line">
       {/* A single, faint accent glow — the only flourish in the hero. */}
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 -top-40 hidden size-[40rem] rounded-full bg-accent/5 blur-3xl lg:block"
       />
       <ColumnFrame />
-      <Container className="relative pb-24 pt-16 sm:pb-32 sm:pt-24 lg:pb-36 lg:pt-28">
+      <Container className="relative py-20 sm:py-24">
         <div className="max-w-4xl">
           <Eyebrow>AI-first software studio</Eyebrow>
 
