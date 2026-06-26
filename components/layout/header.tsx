@@ -7,6 +7,7 @@ import { Menu } from "lucide-react";
 import { primaryNav, site } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/container";
+import { ColumnFrame } from "@/components/ui/column-frame";
 import { ButtonLink } from "@/components/ui/button";
 import { Logo } from "./logo";
 import { MobileMenu } from "./mobile-menu";
@@ -40,6 +41,7 @@ export function Header() {
           : "border-b border-transparent bg-paper/0",
       )}
     >
+      <ColumnFrame />
       <Container>
         <div
           className={cn(
