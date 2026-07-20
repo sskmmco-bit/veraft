@@ -28,7 +28,12 @@ export function AnimatedList<T>({
   className,
 }: {
   items: T[];
-  renderItem: (item: T) => ReactNode;
+  /**
+   * Renders one card. `ord` is the card's stable ordinal (increments by one
+   * per drop), so `ord % 2` gives a strict, non-flickering alternation that
+   * survives cards shifting position.
+   */
+  renderItem: (item: T, ord: number) => ReactNode;
   /** Milliseconds between drops. */
   interval?: number;
   /** How many cards are shown at once. */
@@ -74,7 +79,7 @@ export function AnimatedList<T>({
             exit={{ opacity: 0, scale: 0.96 }}
             transition={SPRING}
           >
-            {renderItem(item)}
+            {renderItem(item, uid)}
           </motion.div>
         ))}
       </AnimatePresence>
